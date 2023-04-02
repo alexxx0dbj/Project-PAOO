@@ -8,7 +8,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 
 public class TileManager {
     GamePanel gp;
@@ -18,7 +17,7 @@ public class TileManager {
     //constructor
     public TileManager(GamePanel gp){
         this.gp= gp;
-        tile= new Tile[40]; //10 tiles
+        tile= new Tile[100]; //100 tiles
         mapTileNum=new int[gp.maxWorldCol][gp.maxWorldRow];
         getTileImage();
         loadMap("/maps/map01.txt");
@@ -27,48 +26,37 @@ public class TileManager {
     public void getTileImage(){
         try{
             //instantiere tile array
-            tile[0]=new Tile();
-            tile[0].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_basic.png"));
-            tile[1]=new Tile();
-            tile[1].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_iarba_stg.png"));
-            tile[2]=new Tile();
-            tile[2].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_iarba_drpt.png"));
-            tile[3]=new Tile();
-            tile[3].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_colt_drpt_sus.png"));
-            tile[4]=new Tile();
-            tile[4].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_colt_stg_sus.png"));
-            tile[5]=new Tile();
-            tile[5].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_iarba_sus.png"));
-            tile[6]=new Tile();
-            tile[6].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_iarba_jos.png"));
-            tile[7]=new Tile();
-            tile[7].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_colt_stg_jos.png"));
-            tile[8]=new Tile();
-            tile[8].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_colt_drpt_jos.png"));
-            tile[9]=new Tile();
-            tile[9].image= ImageIO.read(getClass().getResourceAsStream("/tiles/copac_jos_drpt.png"));
+            for(int i=1;i<=9;i++)
+            {
+                tile[i]=new Tile();
+                tile[i].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_colt_iarba_jos_drpt.png"));
+            }
             tile[10]=new Tile();
-            tile[10].image= ImageIO.read(getClass().getResourceAsStream("/tiles/copac_jos_stg.png"));
+            tile[10].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_colt_iarba_jos_drpt.png"));
+
             tile[11]=new Tile();
-            tile[11].image= ImageIO.read(getClass().getResourceAsStream("/tiles/copac_mijloc_drpt.png"));
+            tile[11].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_colt_iarba_jos_drpt.png"));
             tile[12]=new Tile();
-            tile[12].image= ImageIO.read(getClass().getResourceAsStream("/tiles/copac_mijloc_stg.png"));
+            tile[12].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_colt_iarba_jos_stg.png"));
             tile[13]=new Tile();
-            tile[13].image= ImageIO.read(getClass().getResourceAsStream("/tiles/copac_sus_drpt.png"));
+            tile[13].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_colt_iarba_sus_drpt.png"));
             tile[14]=new Tile();
-            tile[14].image= ImageIO.read(getClass().getResourceAsStream("/tiles/copac_sus_stg.png"));
-            tile[15]=new Tile();
-            tile[15].image= ImageIO.read(getClass().getResourceAsStream("/tiles/iarba_basic.png"));
-            tile[16]=new Tile();
-            tile[16].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_cotita_iarba_colt_stg_jos.png"));
-            tile[17]=new Tile();
-            tile[17].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_cotita_iarba_colt_stg_sus.png"));
-            tile[18]=new Tile();
-            tile[18].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_cotita_iarba_colt_stg_sus.png"));
-            tile[19]=new Tile();
-            tile[19].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_colt_iarba_sus_drpt.png"));
-            tile[20]=new Tile();
-            tile[20].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_colt_iarba_jos_stg.png"));
+            tile[14].image= ImageIO.read(getClass().getResourceAsStream("/tiles/poteca_colt_iarba_sus_stg.png"));
+
+            tile[23]=new Tile();
+            tile[23].image= ImageIO.read(getClass().getResourceAsStream("/tiles/iarba_basic.png"));
+            tile[24]=new Tile();
+            tile[24].image= ImageIO.read(getClass().getResourceAsStream("/tiles/copac_sus_stg.png"));
+            tile[25]=new Tile();
+            tile[25].image= ImageIO.read(getClass().getResourceAsStream("/tiles/copac_sus_drpt.png"));
+            tile[26]=new Tile();
+            tile[26].image= ImageIO.read(getClass().getResourceAsStream("/tiles/copac_mijloc_stg.png"));
+            tile[27]=new Tile();
+            tile[27].image= ImageIO.read(getClass().getResourceAsStream("/tiles/copac_mijloc_drpt.png"));
+            tile[28]=new Tile();
+            tile[28].image= ImageIO.read(getClass().getResourceAsStream("/tiles/copac_jos_stg.png"));
+            tile[29]=new Tile();
+            tile[29].image= ImageIO.read(getClass().getResourceAsStream("/tiles/copac_jos_drpt.png"));
 
 
 
@@ -97,7 +85,7 @@ public class TileManager {
 
                     //we store the extracted number in the mapTileNum[][]
                     mapTileNum[col][row]=num;
-                    col++; //continue tis until everything in the numbers[] is stored in the mapTileNum[][]
+                    col++; //continue this until everything in the numbers[] is stored in the mapTileNum[][]
                 }
                 if(col==gp.maxWorldCol){
                     col = 0;
