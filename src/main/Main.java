@@ -9,7 +9,7 @@ public class Main {
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //this lets the window properly close when user clicks the close ("x") button
         window.setResizable(false); //we can't resize these window
-        window.setTitle("Cel mai smecher joc");
+        window.setTitle("The Garden of Lost Secrets");
 
         //add GamePanel to the window
         GamePanel gamePanel = new GamePanel();
@@ -20,6 +20,9 @@ public class Main {
 
         window.setLocationRelativeTo(null); //window will be display at the center of the screen = not specify the location of the window
         window.setVisible(true); //ture->so we can see the window
+
+        gamePanel.setupGame();
         gamePanel.startGameThread();
+
     }
 }
